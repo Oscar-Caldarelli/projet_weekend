@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ji4dbh6o72iv"]
+[gd_scene load_steps=4 format=3 uid="uid://hln0cnn4xcjd"]
 
 [ext_resource type="Texture2D" uid="uid://cx5g6f0ee5cmw" path="res://assets/sprites/player/DatPlayer.png" id="1_8p05u"]
 [ext_resource type="Script" uid="uid://bksox8soettbw" path="res://scenes/player/player.gd" id="1_dovo2"]
@@ -14,11 +14,11 @@ scale = Vector2(0.6, 0.6)
 script = ExtResource("1_dovo2")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-6.66667, -65)
+position = Vector2(-3.33333, -65)
 texture = ExtResource("1_8p05u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-20.8333, -39.0833)
+position = Vector2(-16.6667, -40)
 shape = SubResource("RectangleShape2D_1kwx4")
 
 [node name="dashTimer" type="Timer" parent="CharacterBody2D"]
@@ -26,6 +26,14 @@ wait_time = 0.2
 
 [node name="canDashTimer" type="Timer" parent="CharacterBody2D"]
 wait_time = 2.0
+
+[node name="RayCastRight" type="RayCast2D" parent="CharacterBody2D"]
+position = Vector2(-1.66667, -13.3333)
+target_position = Vector2(10, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="CharacterBody2D"]
+position = Vector2(-31.6667, -13.3333)
+target_position = Vector2(-10, 0)
 
 [connection signal="timeout" from="CharacterBody2D/dashTimer" to="CharacterBody2D" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="CharacterBody2D/canDashTimer" to="CharacterBody2D" method="_on_canDashTimer_timeout"]
