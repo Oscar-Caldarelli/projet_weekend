@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://hln0cnn4xcjd"]
+[gd_scene load_steps=4 format=3 uid="uid://hln0cnn4xcjd"]
 
-[ext_resource type="Texture2D" uid="uid://ca3chvdm0vkpa" path="res://assets/sprites/Player.png" id="1_eo61r"]
-[ext_resource type="Texture2D" uid="uid://dfnfdd0jv78hu" path="res://icon.svg" id="2_mxepk"]
+[ext_resource type="Texture2D" uid="uid://cx5g6f0ee5cmw" path="res://assets/sprites/player/DatPlayer.png" id="1_8p05u"]
 
 [sub_resource type="GDScript" id="GDScript_h76iv"]
 resource_name = "playerMouvement"
@@ -53,10 +52,7 @@ func _on_can_dash_timer_timeout() -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kwx4"]
-size = Vector2(90, 176)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wffxq"]
-size = Vector2(1548, 125)
+size = Vector2(41, 87)
 
 [node name="player" type="Node2D"]
 
@@ -64,10 +60,10 @@ size = Vector2(1548, 125)
 script = SubResource("GDScript_h76iv")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("1_eo61r")
+texture = ExtResource("1_8p05u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-28, 39)
+position = Vector2(-13.5, 20.5)
 shape = SubResource("RectangleShape2D_1kwx4")
 
 [node name="dashTimer" type="Timer" parent="CharacterBody2D"]
@@ -75,17 +71,6 @@ wait_time = 0.2
 
 [node name="canDashTimer" type="Timer" parent="CharacterBody2D"]
 wait_time = 2.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(698, 193)
-scale = Vector2(12.0625, 1)
-texture = ExtResource("2_mxepk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(700, 193.5)
-shape = SubResource("RectangleShape2D_wffxq")
 
 [connection signal="timeout" from="CharacterBody2D/dashTimer" to="CharacterBody2D" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="CharacterBody2D/canDashTimer" to="CharacterBody2D" method="_on_canDashTimer_timeout"]
