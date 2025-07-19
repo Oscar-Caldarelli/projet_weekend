@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="projetWeekend"
-run/main_scene="uid://hln0cnn4xcjd"
+run/main_scene="uid://c1aedryumpokt"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
