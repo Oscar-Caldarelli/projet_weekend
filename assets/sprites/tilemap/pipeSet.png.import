@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3grc0nibfmf7"
-path="res://.godot/imported/pipeSet.png-9e11db00ca15b2a4a129aa8400f8bdd8.ctex"
+path="res://.godot/imported/pipeSet.png-cb0afcdcfb27d7527821f8c0f12a102d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/main/pipeSet.png"
-dest_files=["res://.godot/imported/pipeSet.png-9e11db00ca15b2a4a129aa8400f8bdd8.ctex"]
+source_file="res://assets/sprites/tilemap/pipeSet.png"
+dest_files=["res://.godot/imported/pipeSet.png-cb0afcdcfb27d7527821f8c0f12a102d.ctex"]
 
 [params]
 

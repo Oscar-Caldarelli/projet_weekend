@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wa5t0cw5ve8e"
-path="res://.godot/imported/prefabs.png-2f9050cd4dababa528a1e6df9592cb26.ctex"
+path="res://.godot/imported/prefabs.png-4895df78972bb26137f580febe2d2dd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/main/prefabs.png"
-dest_files=["res://.godot/imported/prefabs.png-2f9050cd4dababa528a1e6df9592cb26.ctex"]
+source_file="res://assets/sprites/tilemap/prefabs.png"
+dest_files=["res://.godot/imported/prefabs.png-4895df78972bb26137f580febe2d2dd3.ctex"]
 
 [params]
 
