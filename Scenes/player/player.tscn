@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://hln0cnn4xcjd"]
 
-[ext_resource type="Texture2D" uid="uid://ca3chvdm0vkpa" path="res://assets/sprites/Player.png" id="1_6rc2r"]
-[ext_resource type="Texture2D" uid="uid://dfnfdd0jv78hu" path="res://icon.svg" id="2_h76iv"]
+[ext_resource type="Texture2D" uid="uid://ca3chvdm0vkpa" path="res://assets/sprites/Player.png" id="1_eo61r"]
+[ext_resource type="Texture2D" uid="uid://dfnfdd0jv78hu" path="res://icon.svg" id="2_mxepk"]
 
 [sub_resource type="GDScript" id="GDScript_h76iv"]
 resource_name = "playerMouvement"
@@ -58,13 +58,13 @@ size = Vector2(90, 176)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wffxq"]
 size = Vector2(1548, 125)
 
-[node name="Node2D" type="Node2D"]
+[node name="player" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = SubResource("GDScript_h76iv")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("1_6rc2r")
+texture = ExtResource("1_eo61r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-28, 39)
@@ -81,7 +81,7 @@ wait_time = 2.0
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(698, 193)
 scale = Vector2(12.0625, 1)
-texture = ExtResource("2_h76iv")
+texture = ExtResource("2_mxepk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(700, 193.5)
