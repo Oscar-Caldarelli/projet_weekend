@@ -10,6 +10,9 @@ script/source = "extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+const DASH_SPEED = 900.0
+var dashing = false
+var canDash = true
 
 
 func _physics_process(delta: float) -> void:
@@ -20,23 +23,40 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+	if Input.is_action_just_pressed(\"dash\") and canDash :
+		dashing = true
+		canDash = false
+		$dashTimer.start()
+		$canDashTimer.start()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis(\"left\", \"right\")
 	if direction:
-		velocity.x = direction * SPEED
+		if dashing:
+			velocity.x = direction * DASH_SPEED
+		else:
+			velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+
+func _on_dash_timer_timeout() -> void:
+	dashing = false
+	
+
+func _on_can_dash_timer_timeout() -> void:
+	canDash = true
+	
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kwx4"]
 size = Vector2(90, 176)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wffxq"]
-size = Vector2(133, 125)
+size = Vector2(1548, 125)
 
 [node name="Node2D" type="Node2D"]
 
@@ -50,12 +70,23 @@ texture = ExtResource("1_6rc2r")
 position = Vector2(-28, 39)
 shape = SubResource("RectangleShape2D_1kwx4")
 
+[node name="dashTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.2
+
+[node name="canDashTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 2.0
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(-10, 193)
+position = Vector2(698, 193)
+scale = Vector2(12.0625, 1)
 texture = ExtResource("2_h76iv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-7.5, 193.5)
+position = Vector2(700, 193.5)
 shape = SubResource("RectangleShape2D_wffxq")
+
+[connection signal="timeout" from="CharacterBody2D/dashTimer" to="CharacterBody2D" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/canDashTimer" to="CharacterBody2D" method="_on_canDashTimer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/canDashTimer" to="CharacterBody2D" method="_on_can_dash_timer_timeout"]
