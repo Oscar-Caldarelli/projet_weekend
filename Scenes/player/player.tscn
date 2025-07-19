@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://hln0cnn4xcjd"]
 
 [ext_resource type="Texture2D" uid="uid://cx5g6f0ee5cmw" path="res://assets/sprites/player/DatPlayer.png" id="1_8p05u"]
-[ext_resource type="Script" uid="uid://bksox8soettbw" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="Script" uid="uid://bksox8soettbw" path="res://Scenes/player/player.gd" id="1_eo61r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kwx4"]
 size = Vector2(31.6667, 75.1667)
 
 [node name="player" type="Node2D"]
+script = ExtResource("1_eo61r")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(10, 1)
 scale = Vector2(0.6, 0.6)
-script = ExtResource("1_dovo2")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(-3.33333, -65)
@@ -28,13 +28,15 @@ wait_time = 0.2
 wait_time = 2.0
 
 [node name="RayCastRight" type="RayCast2D" parent="CharacterBody2D"]
-position = Vector2(-1.66667, -13.3333)
-target_position = Vector2(10, 0)
+position = Vector2(-16.6667, -13.3333)
+target_position = Vector2(35, -1.90735e-06)
 
 [node name="RayCastLeft" type="RayCast2D" parent="CharacterBody2D"]
-position = Vector2(-31.6667, -13.3333)
-target_position = Vector2(-10, 0)
+position = Vector2(-16.6667, -13.3333)
+target_position = Vector2(-33.3333, -1.90735e-06)
 
+[connection signal="timeout" from="CharacterBody2D/dashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="CharacterBody2D/dashTimer" to="CharacterBody2D" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/canDashTimer" to="." method="_on_can_dash_timer_timeout"]
 [connection signal="timeout" from="CharacterBody2D/canDashTimer" to="CharacterBody2D" method="_on_canDashTimer_timeout"]
 [connection signal="timeout" from="CharacterBody2D/canDashTimer" to="CharacterBody2D" method="_on_can_dash_timer_timeout"]
